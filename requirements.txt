@@ -1,0 +1,9 @@
+chamferdist==1.0.3
+diffusers==0.33.1
+einops==0.8.2
+numpy==2.4.4
+OCC==0.0.2.dev20190912195130
+occwl==3.0.0
+shutup==0.3.0
+tqdm==4.67.1
+transformers==4.44.2

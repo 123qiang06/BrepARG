@@ -1,0 +1,12 @@
+{
+  "deepcad": {
+    "face_index_size": 50,
+    "se_codebook_size": 4096,
+    "bbox_index_size": 2048
+  },
+  "abc": {
+    "face_index_size": 50,
+    "se_codebook_size": 8192,
+    "bbox_index_size": 2048
+  }
+}
