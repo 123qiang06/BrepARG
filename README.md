@@ -13,6 +13,60 @@ pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https
 pip install -r requirements.txt
 ```
 
+# pretrained weights
+
+Pretrained weights are **not** included in the source repository. Clone the code only downloads source files; download weights separately from [GitHub Releases](https://github.com/123qiang06/BrepARG/releases/tag/v1.0-pretrained-weights).
+
+| File | Description | Size |
+|------|-------------|------|
+| [abc_ar.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_ar.pt) | AR model (ABC) | ~33 MB |
+| [abc_vqvae.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_vqvae.pt) | SE VQ-VAE (ABC, codebook=8192) | ~220 MB |
+| [deepcad_ar.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_ar.pt) | AR model (DeepCAD) | ~32 MB |
+| [deepcad_vqvae.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_vqvae.pt) | SE VQ-VAE (DeepCAD, codebook=4096) | ~219 MB |
+
+Download and place them under `checkpoint/weights/`:
+
+```bash
+mkdir -p checkpoint/weights
+cd checkpoint/weights
+
+# Linux / macOS
+wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_ar.pt
+wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_vqvae.pt
+wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_ar.pt
+wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_vqvae.pt
+```
+
+```powershell
+# Windows PowerShell
+New-Item -ItemType Directory -Force -Path checkpoint\weights | Out-Null
+$base = "https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights"
+Invoke-WebRequest "$base/abc_ar.pt" -OutFile checkpoint\weights\abc_ar.pt
+Invoke-WebRequest "$base/abc_vqvae.pt" -OutFile checkpoint\weights\abc_vqvae.pt
+Invoke-WebRequest "$base/deepcad_ar.pt" -OutFile checkpoint\weights\deepcad_ar.pt
+Invoke-WebRequest "$base/deepcad_vqvae.pt" -OutFile checkpoint\weights\deepcad_vqvae.pt
+```
+
+Each weight file contains only `model_state_dict` (inference-ready, no optimizer or training metadata).
+
+**ABC inference example:**
+
+```bash
+python generate_brep.py \
+  --ar_model checkpoint/weights/abc_ar.pt \
+  --se_vqvae checkpoint/weights/abc_vqvae.pt \
+  --dataset_path data/abc_sequences_v3_no_vertex_v10.pkl
+```
+
+**DeepCAD inference example:**
+
+```bash
+python generate_brep.py \
+  --ar_model checkpoint/weights/deepcad_ar.pt \
+  --se_vqvae checkpoint/weights/deepcad_vqvae.pt \
+  --dataset_path data/deepcad_sequences_v3_no_vertex_v9.9.pkl
+```
+
 # process data
 ```python
 python process_brep.py

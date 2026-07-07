@@ -1,0 +1,25 @@
+# Model checkpoints (download separately from GitHub Releases)
+checkpoint/
+*.pt
+
+# Training backups
+checkpoint/weights_full/
+
+# Python
+__pycache__/
+*.py[cod]
+.Python
+.env
+.venv/
+venv/
+
+# IDE / OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Logs and outputs
+logs/
+result/
+*.log
