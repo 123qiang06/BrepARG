@@ -15,9 +15,7 @@ pip install -r requirements.txt
 
 # pretrained weights
 
-Pretrained weights are hosted on [Hugging Face](https://huggingface.co/qingtiannihao/BrepARG) and are **not** included in the source repository.
-
-Each checkpoint contains only `model_state_dict` (inference-ready, no optimizer or training metadata).
+Pretrained weights are hosted on [Hugging Face](https://huggingface.co/qingtiannihao/BrepARG) 
 
 ## Weight List
 
@@ -41,26 +39,6 @@ huggingface-cli download qingtiannihao/BrepARG \
   checkpoint/weights/deepcad_ar.pt \
   checkpoint/weights/deepcad_vqvae.pt \
   --local-dir .
-```
-
-## Inference Examples
-
-**ABC:**
-
-```bash
-python generate_brep.py \
-  --ar_model checkpoint/weights/abc_ar.pt \
-  --se_vqvae checkpoint/weights/abc_vqvae.pt \
-  --dataset_path data/abc_sequences_v3_no_vertex_v10.pkl
-```
-
-**DeepCAD:**
-
-```bash
-python generate_brep.py \
-  --ar_model checkpoint/weights/deepcad_ar.pt \
-  --se_vqvae checkpoint/weights/deepcad_vqvae.pt \
-  --dataset_path data/deepcad_sequences_v3_no_vertex_v9.9.pkl
 ```
 
 # process data
