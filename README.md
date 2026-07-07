@@ -3,7 +3,51 @@
 <img width="1476" height="708" alt="image" src="https://github.com/user-attachments/assets/0c2bec0e-fbd3-43ec-b2bf-f7533cc76d8c" />
 
 # environment
-We will provide a Conda environment package later.
+
+We provide a pre-built Conda environment package on [Hugging Face](https://huggingface.co/datasets/qingtiannihao/BrepARG_conda).
+
+| File | Description | Size |
+|------|-------------|------|
+| [breparg.tar.gz](https://huggingface.co/datasets/qingtiannihao/BrepARG_conda/resolve/main/breparg.tar.gz) | Pre-built BrepARG conda environment (packed with `conda-pack`) | ~3.0 GB |
+
+## Install from conda package
+
+The environment was packed with `conda-pack`. For the migration workflow, see [this guide](https://blog.csdn.net/weixin_52581013/article/details/146208796).
+
+**1. Download the environment package**
+
+```bash
+pip install -U huggingface_hub
+
+huggingface-cli download qingtiannihao/BrepARG_conda breparg.tar.gz --local-dir .
+```
+
+**2. Create the target environment folder and extract**
+
+Replace `~/anaconda3` with your own Conda installation path:
+
+```bash
+mkdir -p ~/anaconda3/envs/breparg
+tar -xzvf breparg.tar.gz -C ~/anaconda3/envs/breparg
+```
+
+**3. Run `conda-unpack` (required after `conda-pack` extraction)**
+
+```bash
+~/anaconda3/envs/breparg/bin/conda-unpack
+```
+
+**4. Activate and verify**
+
+```bash
+conda activate breparg
+conda info -e
+```
+
+## Manual install (alternative)
+
+If you prefer to build the environment from scratch:
+
 ```python
 conda create --name breparg python=3.10
 conda activate breparg
