@@ -15,39 +15,20 @@ pip install -r requirements.txt
 
 # pretrained weights
 
-Pretrained weights are **not** included in the source repository. Clone the code only downloads source files; download weights separately from [GitHub Releases](https://github.com/123qiang06/BrepARG/releases/tag/v1.0-pretrained-weights).
+Pretrained weights are hosted on [Hugging Face](https://huggingface.co/qingtiannihao/BrepARG) and are **not** included in this repository.
 
-| File | Description | Size |
-|------|-------------|------|
-| [abc_ar.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_ar.pt) | AR model (ABC) | ~33 MB |
-| [abc_vqvae.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_vqvae.pt) | SE VQ-VAE (ABC, codebook=8192) | ~220 MB |
-| [deepcad_ar.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_ar.pt) | AR model (DeepCAD) | ~32 MB |
-| [deepcad_vqvae.pt](https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_vqvae.pt) | SE VQ-VAE (DeepCAD, codebook=4096) | ~219 MB |
-
-Download and place them under `checkpoint/weights/`:
+Download them into `checkpoint/weights/`:
 
 ```bash
-mkdir -p checkpoint/weights
-cd checkpoint/weights
+pip install -U huggingface_hub
 
-# Linux / macOS
-wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_ar.pt
-wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/abc_vqvae.pt
-wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_ar.pt
-wget https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights/deepcad_vqvae.pt
+huggingface-cli download qingtiannihao/BrepARG \
+  checkpoint/weights/abc_ar.pt \
+  checkpoint/weights/abc_vqvae.pt \
+  checkpoint/weights/deepcad_ar.pt \
+  checkpoint/weights/deepcad_vqvae.pt \
+  --local-dir .
 ```
-
-```powershell
-# Windows PowerShell
-New-Item -ItemType Directory -Force -Path checkpoint\weights | Out-Null
-$base = "https://github.com/123qiang06/BrepARG/releases/download/v1.0-pretrained-weights"
-Invoke-WebRequest "$base/abc_ar.pt" -OutFile checkpoint\weights\abc_ar.pt
-Invoke-WebRequest "$base/abc_vqvae.pt" -OutFile checkpoint\weights\abc_vqvae.pt
-Invoke-WebRequest "$base/deepcad_ar.pt" -OutFile checkpoint\weights\deepcad_ar.pt
-Invoke-WebRequest "$base/deepcad_vqvae.pt" -OutFile checkpoint\weights\deepcad_vqvae.pt
-```
-
-Each weight file contains only `model_state_dict` (inference-ready, no optimizer or training metadata).
 
 **ABC inference example:**
 
