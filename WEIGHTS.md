@@ -27,23 +27,3 @@ huggingface-cli download qingtiannihao/BrepARG \
   checkpoint/weights/deepcad_vqvae.pt \
   --local-dir .
 ```
-
-## Inference Examples
-
-**ABC:**
-
-```bash
-python generate_brep.py \
-  --ar_model checkpoint/weights/abc_ar.pt \
-  --se_vqvae checkpoint/weights/abc_vqvae.pt \
-  --dataset_path data/abc_sequences_v3_no_vertex_v10.pkl
-```
-
-**DeepCAD:**
-
-```bash
-python generate_brep.py \
-  --ar_model checkpoint/weights/deepcad_ar.pt \
-  --se_vqvae checkpoint/weights/deepcad_vqvae.pt \
-  --dataset_path data/deepcad_sequences_v3_no_vertex_v9.9.pkl
-```
