@@ -44,19 +44,6 @@ conda activate breparg
 conda info -e
 ```
 
-## Manual install (alternative)
-
-If you prefer to build the environment from scratch:
-
-```python
-conda create --name breparg python=3.10
-conda activate breparg
-
-pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https://download.pytorch.org/whl/cu118
-
-pip install -r requirements.txt
-```
-
 # pretrained weights
 
 Pretrained weights are hosted on [Hugging Face](https://huggingface.co/qingtiannihao/BrepARG) 
