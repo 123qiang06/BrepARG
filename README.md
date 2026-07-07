@@ -13,40 +13,7 @@ pip install torch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 --index-url https
 pip install -r requirements.txt
 ```
 
-# pretrained weights
-
-Pretrained weights are hosted on [Hugging Face](https://huggingface.co/qingtiannihao/BrepARG) and are **not** included in this repository.
-
-Download them into `checkpoint/weights/`:
-
-```bash
-pip install -U huggingface_hub
-
-huggingface-cli download qingtiannihao/BrepARG \
-  checkpoint/weights/abc_ar.pt \
-  checkpoint/weights/abc_vqvae.pt \
-  checkpoint/weights/deepcad_ar.pt \
-  checkpoint/weights/deepcad_vqvae.pt \
-  --local-dir .
-```
-
-**ABC inference example:**
-
-```bash
-python generate_brep.py \
-  --ar_model checkpoint/weights/abc_ar.pt \
-  --se_vqvae checkpoint/weights/abc_vqvae.pt \
-  --dataset_path data/abc_sequences_v3_no_vertex_v10.pkl
-```
-
-**DeepCAD inference example:**
-
-```bash
-python generate_brep.py \
-  --ar_model checkpoint/weights/deepcad_ar.pt \
-  --se_vqvae checkpoint/weights/deepcad_vqvae.pt \
-  --dataset_path data/deepcad_sequences_v3_no_vertex_v9.9.pkl
-```
+See [WEIGHTS.md](WEIGHTS.md) for pretrained weight downloads.
 
 # process data
 ```python
